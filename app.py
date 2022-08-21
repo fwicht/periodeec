@@ -42,7 +42,7 @@ def login():
     )
     arl = response.json()["arl"]
     response = s.post(f"{env.deemix_url}/api/loginArl", json={"arl": arl})
-    logging.info(response.json())
+    print(response.json())
 
 
 def download(url: str):
@@ -54,7 +54,7 @@ def download(url: str):
             "url": url,
         },
     )
-    logging.info(response.json())
+    print(f"downloading {url}")
 
 
 def playlists() -> list:
@@ -76,6 +76,7 @@ def main():
         for playlist in playlists():
             download(playlist)
         time.sleep(env.interval)
+        print(f"sleeping for {env.interval} seconds")
 
 
 if __name__ == "__main__":
