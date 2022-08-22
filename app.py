@@ -75,8 +75,8 @@ def main():
     while True:
         for playlist in playlists():
             download(playlist)
-        time.sleep(env.interval)
         print(f"sleeping for {env.interval} seconds")
+        time.sleep(env.interval)
 
 
 if __name__ == "__main__":
