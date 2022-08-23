@@ -70,9 +70,14 @@ def playlists() -> list:
     return playlists
 
 
+def clear_queue():
+    response = s.get(f"{env.deemix_url}/api/removeFinishedDownloads")
+
+
 def main():
     login()
     while True:
+        clear_queue()
         for playlist in playlists():
             download(playlist)
         print(f"sleeping for {env.interval} seconds")
