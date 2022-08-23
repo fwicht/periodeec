@@ -42,7 +42,7 @@ def login():
     )
     arl = response.json()["arl"]
     response = s.post(f"{env.deemix_url}/api/loginArl", json={"arl": arl})
-    print(response.json())
+    print(f"loging user {env.deezer_email}: {response.text}")
 
 
 def download(url: str):
@@ -54,7 +54,7 @@ def download(url: str):
             "url": url,
         },
     )
-    print(f"downloading {url}")
+    print(f"downloading {url}: {response.text}")
 
 
 def playlists() -> list:
@@ -72,6 +72,7 @@ def playlists() -> list:
 
 def clear_queue():
     response = s.get(f"{env.deemix_url}/api/removeFinishedDownloads")
+    print(f"clearing queue: {response.text}")
 
 
 def main():
