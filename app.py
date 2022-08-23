@@ -71,7 +71,7 @@ def playlists() -> list:
 
 
 def clear_queue():
-    response = s.get(f"{env.deemix_url}/api/removeFinishedDownloads")
+    response = s.post(f"{env.deemix_url}/api/cancelAllDownloads")
     print(f"clearing queue: {response.text}")
 
 
